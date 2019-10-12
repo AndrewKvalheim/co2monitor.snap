@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+# Default configuration
+snapctl set device='/dev/hidraw0' listen-address=':8080'

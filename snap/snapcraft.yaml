@@ -1,0 +1,23 @@
+name: co2monitor
+base: core18
+version: git
+summary: CO₂ & Temperature monitor
+description: |
+  Packaging of Lars Pfannenschmidt's "CO₂ monitor".
+
+  See https://github.com/larsp/co2monitor
+grade: devel
+confinement: strict
+
+apps:
+  co2monitor:
+    command: co2monitor "$(snapctl get device)" "$(snapctl get listen-address)"
+    daemon: simple
+    plugs:
+      - hidraw
+
+parts:
+  co2monitor:
+    plugin: go
+    go-packages:
+      - github.com/larsp/co2monitor
